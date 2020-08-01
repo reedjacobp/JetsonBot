@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<robot name="jetson">
+    <link name="base_link">
+        <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+            <box size="0.2667 0.2286 0.0508"/>
+        </geometry>
+        </visual>
+    </link>
+
+    <link name="laser">
+	<visual>
+	    <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.034925" length="0.0254"/>
+            </geometry>
+	</visual>
+    </link>
+
+    <joint name="laser_joint" type="fixed">
+	<origin xyz="0.1143 0 0.127" rpy="0 0 0"/>
+	<parent link="base_link"/>
+	<child link="laser"/>
+    </joint>
+
+    <link name="camera_link">
+	<visual>
+	    <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <box size="0.025 0.085 0.02"/>
+            </geometry>
+	</visual>
+    </link>
+
+    <joint name="camera_joint" type="fixed">
+	<origin xyz="0.1905 0 0.13335" rpy="0 0 0"/>
+	<parent link="base_link"/>
+	<child link="camera_link"/>
+    </joint>
+
+    <link name="front_right_wheel_link">
+        <visual>
+            <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.0635" length="0.0635"/>
+            </geometry>
+        </visual>
+    </link>
+    
+    <joint name="front_right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="front_right_wheel_link"/>
+	<axis xyz="0 1 0"/>
+        <origin xyz="0.1143 -0.1524 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="back_right_wheel_link">
+        <visual>
+            <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.0635" length="0.0635"/>
+            </geometry>
+        </visual>
+    </link>
+    
+    <joint name="back_right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="back_right_wheel_link"/>
+	<axis xyz="0 1 0"/>
+        <origin xyz="-0.1143 -0.1524 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="back_left_wheel_link">
+        <visual>
+            <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.0635" length="0.0635"/>
+            </geometry>
+        </visual>
+    </link>
+    
+    <joint name="back_left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="back_left_wheel_link"/>
+	<axis xyz="0 1 0"/>
+        <origin xyz="-0.1143 0.1524 0" rpy="0 0 0"/>
+    </joint>
+
+    <link name="front_left_wheel_link">
+        <visual>
+            <origin rpy="1.570796 0 0" xyz="0 0 0"/>
+            <geometry>
+                <cylinder radius="0.0635" length="0.0635"/>
+            </geometry>
+        </visual>
+    </link>
+    
+    <joint name="front_left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="front_left_wheel_link"/>
+	<axis xyz="0 1 0"/>
+        <origin xyz="0.1143 0.1524 0" rpy="0 0 0"/>
+    </joint>
+
+</robot>

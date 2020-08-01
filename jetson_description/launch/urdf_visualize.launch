@@ -1,0 +1,19 @@
+<launch>
+
+  <!-- USE: roslaunch jetson_description urdf_visualize.launch model:='$(find jetson_description)/urdf/jetson.urdf' -->
+  <arg name="model" default="jetson"/>
+
+  <param name="robot_description" command="cat $(arg model)" />
+
+  <!-- send fake joint values -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+  </node>
+
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+  <!-- Show in Rviz   -->
+  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_description)/rviz_config/robot.rviz"/> -->
+  <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find jetson_description)/rviz_config/jetson.rviz"/> -->
+</launch>
